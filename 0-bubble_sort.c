@@ -14,11 +14,11 @@ size_t i;
 int tmp;
 for (i = 0; i < size - 1; i++)
 {
-if (array[i] > array[i+1])
+if (array[i] > array[i + 1])
 {
 tmp = array[i];
-array[i] = array[i+1];
-array[i+1] = tmp;
+array[i] = array[i + 1];
+array[i + 1] = tmp;
 print_array(array, size);
 }
 }
@@ -28,19 +28,19 @@ return;
 }
 
 /**
- *is_sorted: checks if an array of integeres is sorted
+ *is_sorted - checks if an array of integeres is sorted
  *
  *@array: the array of integers
  *@size: size of array
- *return: zero if sorted or 1 if not sorted
+ *Return: zero if sorted or 1 if not sorted
  */
 int is_sorted(int *array, size_t size)
 {
 size_t i;
 for (i = 0; i < size - 1; i++)
 {
-if (array[i] > array[i+1])
-return 1;
+if (array[i] > array[i + 1])
+return (1);
 }
-return 0;
+return (0);
 }
