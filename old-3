@@ -13,22 +13,20 @@ void quick_sort(int *array, size_t size)
 {
   size_t i;
   size_t j;
-  size_t k;
   int tmp;
   int pivot;
   int cursor;
   int tracker;
+  int less[size/2];
+  int greater[size/2];
   cursor = size - 1;
+  pivot = array[cursor];
   tracker = 0;
-  for (k = 0; k < size; k++)
-    {
-      pivot = array[size - 1];
-      
-      for (i = 0, j = 0; j < size; j++)
+  for (i = 0, j = 0; j < size; j++)
     {
       if (array[i] > pivot)
 	{
-	  if (tracker != 1)
+	  if (tracker == 2)
 	    {
 	      tmp = array[i];
 	      array[i] = array[cursor];
@@ -47,7 +45,7 @@ void quick_sort(int *array, size_t size)
 	}
       else if (array[i] < pivot)
 	{
-	  if (tracker != 2)
+	  if (tracker == 1)
 	    {
 	      tmp = array[i];
 	      array[i] = array[cursor];
@@ -65,7 +63,8 @@ void quick_sort(int *array, size_t size)
 	    }
 	}
     }
-    }
+  if(is_sorted_list(array, size) != 0)
+    quick_sort(array, size);
   return;
 }
 
