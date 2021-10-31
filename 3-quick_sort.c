@@ -12,61 +12,56 @@
 void quick_sort(int *array, size_t size)
 {
   size_t i;
-  size_t j;
-  size_t k;
+  size_t cursor;
   int tmp;
   int pivot;
-  int cursor;
-  int tracker;
-  cursor = size - 1;
-  tracker = 0;
-  for (k = 0; k < size; k++)
+  if (size < 2)
+    return;
+do
+  {
+cursor = size - 1;
+pivot = array[cursor];
+ for (i = 0; i < size; i++)
+   {
+     if (array[i] > pivot)
+       break;
+   }
+ if (i == size)
+   {
+   pivot = array[cursor - 1];
+   }
+ for (i = 0; i < size; i++)
     {
-      pivot = array[size - 1];
-      
-      for (i = 0, j = 0; j < size; j++)
-    {
-      if (array[i] > pivot)
+     if (array[i] > pivot)
 	{
-	  if (tracker != 1)
+	  if (i < cursor)
 	    {
 	      tmp = array[i];
 	      array[i] = array[cursor];
 	      array[cursor] = tmp;
-	      tmp = i;
-	      i = cursor - 1;
-	      cursor = tmp;
-	      tracker = 1;
 	      print_array(array, size);
+	      cursor = i;
 	    }
 	  else
-	    {
-	      i--;
-	      continue;
-	    }
+	    continue;
 	}
       else if (array[i] < pivot)
 	{
-	  if (tracker != 2)
+	  if (i > cursor)
 	    {
 	      tmp = array[i];
 	      array[i] = array[cursor];
 	      array[cursor] = tmp;
-	      tmp = i;
-	      i = cursor + 1;
-	      cursor = tmp;
-	      tracker = 2;
 	      print_array(array, size);
+	      cursor = i;
 	    }
 	  else
-	    {
-	      i++;
-	      continue;
-	    }
+	    continue;
 	}
     }
-    }
-  return;
+  }while (is_sorted_list(array, size) != 0);
+ 
+return;
 }
 
 /**

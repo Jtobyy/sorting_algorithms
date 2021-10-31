@@ -16,6 +16,8 @@ size_t j;
 int tmp;
 int select;
 i = 0;
+if (size < 2)
+return;
 while (i < size)
 {
 select = array[i];

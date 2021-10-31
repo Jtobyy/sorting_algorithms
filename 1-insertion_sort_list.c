@@ -13,7 +13,7 @@ listint_t *cursor = NULL;
 listint_t *tmp0 = NULL;
 listint_t *tmp1 = NULL;
 listint_t *tmp2 = NULL;
-if (*list == NULL)
+if (*list == NULL || *list->next == NULL)
 return;
 for (cursor = *list; cursor != NULL;)
 {
